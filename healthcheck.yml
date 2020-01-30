@@ -7,7 +7,7 @@
     - apache_install
     - create_html
 
-  tasks:
+  post_tasks:
   - name: Remove Touch file if there
     file:
       path: /tmp/curl_test.txt
