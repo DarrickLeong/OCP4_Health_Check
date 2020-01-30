@@ -11,4 +11,5 @@ ADD semanage port to httpd in roles/firewalld_open/tasks/main.yml
 ------------------------------------------------------------
 
 RUN healthcheck.yml
+
 CHECK localhost /tmp/curl_test.txt
