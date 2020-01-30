@@ -8,18 +8,6 @@
     - create_html
 
   post_tasks:
-  - name: Remove Touch file if there
-    file:
-      path: /tmp/curl_test.txt
-      state: absent
-    delegate_to: 127.0.0.1
-
-  - name: Create Touch a file
-    file:
-      path: /tmp/curl_test.txt
-      state: touch
-    delegate_to: 127.0.0.1
-
   - name: Do Curl test on each host and on each port
     include: curlport.yml
     with_items:
