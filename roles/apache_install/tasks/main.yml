@@ -5,10 +5,22 @@
     name: httpd
     state: latest
 
+
+- name: Configure apache config file
+  template:
+    src: httpd_config.j2
+    dest: /etc/httpd/conf/httpd.conf
+    mode: '0644'
+
 - name: Start httpd service
   service:
     name: httpd
     state: started
+
+- name: Disable service httpd
+  service:
+    name: httpd
+    enabled: no
 
 - name: Enable service httpd
   service:

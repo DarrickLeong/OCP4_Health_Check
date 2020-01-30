@@ -1,0 +1,15 @@
+---
+- name: Curl port "{{ item }}" from localhost
+  uri:
+    url: "http://{{ inventory_hostname }}:{{ item }}"
+    return_content: yes
+  register: msg
+  delegate_to: 127.0.0.1
+  ignore_errors: true
+
+- name: Create output log
+  lineinfile:
+    path: /tmp/curl_test.txt
+    line: "{{ msg.content }} url:{{ msg.url }}\n Fail:{{ msg.failed }}\n on port {{ item }}\n---------------------\n"
+  delegate_to: 127.0.0.1
+

@@ -1,0 +1,24 @@
+---
+# tasks file for firewalld_open
+- name: Open firewall ports
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+    zone: public
+  with_items:
+    - 443/tcp
+    - 80/tcp
+    - 6443/tcp
+    - 22623/tcp
+
+- name: Reload firewall
+  command: firewall-cmd --reload
+
+- name: Add semanage port to httpd
+  command: semanage port -a -t http_port_t -p tcp 22623
+  ignore_errors: true
+
+- name: Add semanage port to httpd
+  command: semanage port -a -t http_port_t -p tcp 6443
+  ignore_errors: true
