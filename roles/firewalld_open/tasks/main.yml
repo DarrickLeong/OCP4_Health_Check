@@ -15,6 +15,11 @@
 - name: Reload firewall
   command: firewall-cmd --reload
 
+- name: Yum install semanage
+  yum:
+    name: policycoreutils-python
+    state: latest
+
 - name: Add semanage port to httpd
   command: semanage port -a -t http_port_t -p tcp 22623
   ignore_errors: true

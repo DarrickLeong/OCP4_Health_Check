@@ -1,6 +1,8 @@
 all:
   hosts:
-    test.example.com: 
-      ansible_host: 192.168.122.110
-    elk.example.com:
-      ansible_host: 192.168.122.128
+    worker01.example.com:
+      ansible_host: 192.168.99.2
+    bootstrap01.example.com:
+      ansible_host: 192.168.99.3
+    master01.example.com:
+      ansible_host: 192.168.99.4
